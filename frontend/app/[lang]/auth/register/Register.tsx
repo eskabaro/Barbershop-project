@@ -31,7 +31,9 @@ export const Register: FC = () => {
    const typePassword = isShowPass ? 'text' : 'password'
 
    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-      await AuthService.register(data)
+      console.log(data);
+      
+      // await AuthService.register(data)
    }
 
    const validateReapetPassword = (value: string) => {
