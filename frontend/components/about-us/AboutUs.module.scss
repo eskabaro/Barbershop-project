@@ -1,0 +1,35 @@
+.wrapper {
+   @apply grid grid-cols-2 mt-12 mb-12;
+
+   @media all and (max-width: '900px') {
+      @apply grid-cols-1;
+
+      &__image_block {
+         @apply p-4;
+      }
+   }
+
+   &__image_block {
+      @apply h-96 w-full overflow-hidden;
+
+      >img {
+         @apply h-full w-full object-cover duration-300 ease-in-out;
+
+         &:hover {   
+            @apply scale-110;
+
+            @media all and (max-width: '900px') {
+               @apply scale-100;
+            }
+         }
+      }
+   }
+
+   &__description {
+      @apply p-4 ml-5;
+
+      @media all and (max-width: '900px') {
+         @apply ml-0;
+      }
+   }
+}

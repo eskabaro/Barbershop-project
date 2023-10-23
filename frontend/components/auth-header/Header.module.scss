@@ -1,0 +1,9 @@
+.header {
+   @apply h-28 flex justify-between;
+   &__logo_box {
+      @apply text-center;
+      >img {
+         @apply rounded-full;
+      }
+   }
+}

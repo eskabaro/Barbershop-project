@@ -1,0 +1,63 @@
+{
+   "first_screen": {
+      "header": {
+         "lcation": "Irpin - st. Mechnikova 108",
+         "time_work": "Working hours 9:00 - 20:00",
+         "links": [
+            "PROCESS",
+            "REVIEWS",
+            "PRICE",
+            "PRODUCTS",
+            "ADDRESS"
+         ]
+      },
+      "content": {
+         "title": "One such in the whole world",
+         "btn_title": "BOOK NOW"
+      }
+   },
+   "second_screen": {
+      "section_1": {
+         "title": "ABOUT US",
+         "description": "All barbershops have a special atmosphere and design. Many men are not comfortable getting their hair cut in ordinary salons with pink walls, listening to women's conversations and looking in mirrors with gold frames. Therefore, there is definitely no feeling of discomfort in barbershops. Black Jack is a place where everything is thought out to the smallest detail for your comfort - come and pump up your style with us."
+      },
+      "section_2": {
+         "titles": [
+            "STRONG DRINKS",
+            "COFFEE, TEA",
+            "GAME CONSOLE"
+         ]
+      },
+      "section_3": {
+         "title": "SERVICES / PRICES",
+         "table_title": {
+            "first": "SERVICE",
+            "second": "TOP BARBER"
+         }
+      },
+      "section_4": {
+         "content": [
+            {
+               "title": "ADDRESS",
+               "value": [
+                  "Irpin - st. Mechnikova 108"
+               ]
+            },
+            {
+               "title": "CONTACTS",
+               "value": [
+                  "Call:",
+                  "+38 050 606 29 00",
+                  "+38 093 594 96 19"
+               ]
+            },
+            {
+               "title": "SCHEDULE",
+               "value": [
+                  "9:00 - 20:00"
+               ]
+            }
+         ]
+      }
+   }
+}

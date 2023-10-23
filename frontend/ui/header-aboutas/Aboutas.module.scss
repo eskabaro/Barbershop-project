@@ -1,0 +1,9 @@
+.aboutas {
+   @media all and (max-width: '900px') {
+      @apply text-center;
+   }
+
+   >p {
+      @apply text-xs;
+   }
+}

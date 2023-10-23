@@ -1,0 +1,20 @@
+.wrapper {
+   @apply bg-secondary mt-12 mb-12 flex justify-evenly pt-20 pb-20 shadow-full-bleed;
+   clip-path: inset(0 -100vmax);
+
+   @media all and (max-width: '600px') {
+      @apply flex-col;
+
+      &__block:not(:last-child) {
+         @apply mb-11;
+      }
+   }
+
+   &__block {
+      @apply flex flex-col items-center;
+
+      >svg {
+         @apply w-36 h-36;
+      }
+   }
+}

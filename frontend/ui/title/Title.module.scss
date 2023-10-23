@@ -1,0 +1,18 @@
+.title {
+   @apply text-3xl w-fit text-white;
+
+   &.underline {
+      @apply relative pb-5 mb-7;
+
+      &::before {
+         content: '';
+         @apply absolute left-0 bottom-0 w-2/3 h-2px bg-white opacity-30;
+      }
+   }
+
+   &.underline_center {
+      &::before {
+         @apply left-1/2 -translate-x-1/2;
+      }
+   }
+}

@@ -1,0 +1,24 @@
+.mouse-btn {
+  @apply w-8 h-14 m-auto border-2 border-white rounded-3xl flex;
+}
+
+.mouse-scroll {
+  @apply block w-5 h-5 bg-white rounded-full m-auto;
+  animation: scrolling 2s linear infinite 1s;
+}
+
+
+@keyframes scrolling {
+  0% {
+     opacity: 0;
+     transform: translateY(-15px);
+  }
+  50% {
+     opacity: 1;
+     transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+}

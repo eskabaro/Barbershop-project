@@ -1,0 +1,59 @@
+.links {
+   @apply flex justify-end;
+
+   @media all and (max-width: '900px') {
+      @apply block h-full pt-20 pb-20;
+   }
+
+   >ul {
+      @apply flex gap-3;
+      
+      @media all and (max-width: '1100px') {
+         @apply gap-2 text-sm;
+      }
+
+      @media all and (max-width: '900px') {
+         @apply h-full flex-col justify-between items-center;
+
+         >button {
+            @apply bg-primary w-full p-3 rounded-xl;
+
+            &::after {
+               content: '';
+               @apply left-0 top-2/4 -translate-y-1/2 absolute w-1 h-0 rounded-r-2xl bg-white duration-300 ease-in-out;
+            }
+
+            &::after:hover {
+               @apply h-7;
+            }
+
+            &.active {
+               &::after {
+                  @apply h-7;
+               }
+            }
+
+            &::before {
+               @apply hidden;
+            }
+         }
+      }
+
+      >button {
+         @apply relative font-semibold cursor-pointer duration-300 ease-in-out;
+
+         &::before {
+            content: '';
+            @apply h-3 w-0 bg-white absolute -bottom-2 rounded duration-300 ease-in-out;
+         }
+
+         &:hover::before {
+            @apply w-full;
+         }
+
+         &:active {
+            @apply opacity-60;
+         }
+      }
+   }
+}

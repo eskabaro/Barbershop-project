@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAdt DateTime @updatedAt @map("updated_at")
+
+  name     String
+  email    String @unique
+  password String
+
+  role Role[]
+
+  avatarPath String @default("") @map("avatar_path")
+
+  accessToken  String @map("access_token")
+  refreshToken String @map("refresh_token")
+}
+
+model Barber {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAdt DateTime @updatedAt @map("updated_at")
+
+  name        String
+  image       String
+  description String
+  rating      Int
+
+  reviews Review[]
+  orders  Order[]
+}
+
+model Order {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAdt DateTime @updatedAt @map("updated_at")
+
+  person      String
+  date        String
+  haircutType String @map("haircut_type")
+
+  barber   Barber? @relation(fields: [barberId], references: [id])
+  barberId String? @map("barber_id")
+}
+
+model Review {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAdt DateTime @updatedAt @map("updated_at")
+
+  author       String
+  authorAvatar String @map("author_avatar")
+  description  String
+  rating       Int
+
+  barber   Barber? @relation(fields: [barberId], references: [id])
+  barberId String? @map("barber_id")
+}
+
+enum Role {
+  USER
+  ADMIN
+}

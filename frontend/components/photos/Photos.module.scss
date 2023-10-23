@@ -1,0 +1,15 @@
+.wrapper { 
+   @apply mt-12 mb-12;
+
+   li {
+      @apply overflow-hidden;
+
+      .image {
+         @apply h-full w-full object-cover opacity-60 duration-300 ease-in-out;
+
+         &:hover {
+            @apply opacity-100 scale-110;
+         }
+      }
+   }
+}

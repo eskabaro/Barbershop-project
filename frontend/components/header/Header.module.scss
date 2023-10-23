@@ -1,0 +1,56 @@
+.header {
+   @apply h-56 grid grid-cols-3 items-center;
+
+   @media all and (max-width: '900px') {
+      @apply grid-cols-2 sticky top-0 h-44 z-10 -mr-5% -ml-5% pr-5% pl-5%;
+
+      &::after {
+         content: '';
+         @apply absolute top-0 left-0 w-full h-full backdrop-blur-sm -z-10 border-b border-white;
+      }
+   }
+
+   &__info {
+      @media all and (max-width: '900px') {
+         @apply hidden;
+      }
+   }
+
+   &__logo {
+      @apply flex items-center flex-col h-fit w-fit m-auto;
+
+      @media all and (max-width: '1100px') {
+         @apply w-24;
+
+         >p {
+            @apply text-sm;
+         }
+      }
+
+      @media all and (max-width: '900px') {
+         @apply m-0;
+      }
+
+      @media all and (max-width: '600px') {
+         @apply w-20 m-0;
+
+         >p {
+            @apply text-xs;
+         }
+      }
+
+      >img {
+         @apply rounded-full;
+      }
+
+      >p {
+         @apply w-fit pt-2;
+      }
+   }
+
+   &__links {
+      @media all and (max-width: '900px') {
+         @apply hidden;
+      }
+   }
+}

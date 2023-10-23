@@ -1,0 +1,23 @@
+.cntainer {
+   @apply w-full flex justify-center h-full;
+
+   &.mt {
+      @apply mt-screen;
+   }
+
+   &.bg {
+      @apply bg-primary;
+   }
+
+   &.rel {
+      @apply relative;
+   }
+
+   &.zIdx {
+      @apply z-20;
+   }
+
+   >main {
+      @apply w-full h-auto z-20 max-w-screen-2xl mr-5% ml-5%;
+   }
+}

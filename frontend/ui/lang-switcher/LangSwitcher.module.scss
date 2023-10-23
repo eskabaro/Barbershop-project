@@ -1,0 +1,9 @@
+.wrapper {
+   @apply flex gap-2;
+
+   > li > a {
+      &.active {
+         @apply underline;
+      }
+   }
+}
