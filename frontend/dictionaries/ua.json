@@ -59,5 +59,24 @@
             }
          ]
       }
+   },
+   "auth": {
+      "login": {
+         "title": "Логін",
+         "placeholder_email": "Почта",
+         "placeholder_password": "Пароль",
+         "show_pass_btn": "Показати пароль",
+         "submit_btn": "Логін",
+         "link": "Потрібен аккаунт? | Реєстрація"
+      },
+      "register": {
+         "title": "Реєстрація",
+         "placeholder_email": "Почта",
+         "placeholder_name": "Ім'я",
+         "placeholder_password": "Пароль",
+         "placeholder_reapPass": "Повторити пароль",
+         "show_pass_btn": "Показати пароль",
+         "submit_btn": "Створити аккаунт"
+      }
    }
 }

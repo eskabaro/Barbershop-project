@@ -1,10 +1,10 @@
 import axios from "axios";
-import { ILoginBody, IRegosterBody } from "./types";
+import { ILoginBody, IRegisterBody } from "./types";
 
 axios.defaults.baseURL = 'http://localhost:4000/api'
 
 class Auth {
-   async register(body: IRegosterBody) {
+   async register(body: IRegisterBody) {
       await axios.post('/auth/register', body)
    }
 

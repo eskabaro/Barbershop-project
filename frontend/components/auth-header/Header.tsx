@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from './Header.module.scss'
 import Image from "next/image";
 import Link from "next/link";
+import { ButtonGroup } from "@/ui/btn-auth";
 
 export const Header: FC = () => {
    return (
@@ -10,6 +11,7 @@ export const Header: FC = () => {
             <Image src={'/logo.jpg'} width={80} height={80} alt="Logo" />
             <p>Black Jack</p>
          </Link>
+         <ButtonGroup />
       </header>
    )
 } 

@@ -59,5 +59,24 @@
             }
          ]
       }
+   },
+   "auth": {
+      "login": {
+         "title": "Login",
+         "placeholder_email": "Email",
+         "placeholder_password": "Password",
+         "show_pass_btn": "Show password",
+         "submit_btn": "Login",
+         "link": "Need account? | Register"
+      },
+      "register": {
+         "title": "Register",
+         "placeholder_email": "Email",
+         "placeholder_name": "Name",
+         "placeholder_password": "Password",
+         "placeholder_reapPass": "Reapet password",
+         "show_pass_btn": "Show password",
+         "submit_btn": "Create account"
+      }
    }
 }

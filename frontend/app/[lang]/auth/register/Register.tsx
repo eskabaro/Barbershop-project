@@ -7,6 +7,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import cn from 'classnames'
 import { AuthService } from "@/services/auth/auth.service";
+import { useMutation } from "@tanstack/react-query";
+import { IRegisterBody } from "@/services/auth/types";
+import { LoadingButton } from "@mui/lab";
 
 interface IFormInput {
    name: string,
@@ -15,9 +18,27 @@ interface IFormInput {
    reapPass: string
 }
 
+interface IProps {
+   title: string,
+   placeholder_email: string,
+   placeholder_name: string,
+   placeholder_password: string,
+   placeholder_reapPass: string,
+   show_pass_btn: string,
+   submit_btn: string
+}
+
 type returnClassesType = "name" | "email" | "password" | "reapPass"
 
-export const Register: FC = () => {
+export const Register: FC<IProps> = ({
+   title,
+   placeholder_email,
+   placeholder_name,
+   placeholder_password,
+   placeholder_reapPass,
+   show_pass_btn,
+   submit_btn
+}) => {
    const {
       register,
       formState: { errors },
@@ -30,10 +51,14 @@ export const Register: FC = () => {
    const [isShowPass, setIsShowPass] = useState<boolean>(false)
    const typePassword = isShowPass ? 'text' : 'password'
 
+   const { mutateAsync, isError, isPending } = useMutation({
+      mutationFn: (data: IRegisterBody) => {
+         return AuthService.login(data)
+      }
+   })
+
    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-      console.log(data);
-      
-      // await AuthService.register(data)
+      await mutateAsync(data)
    }
 
    const validateReapetPassword = (value: string) => {
@@ -51,7 +76,7 @@ export const Register: FC = () => {
       <section className={styles.wrapper}>
          <form onSubmit={handleSubmit(onSubmit)}>
             <Typography variant="h4" component="h3">
-               Register
+               {title}
             </Typography>
             <div className={returnClasses('name')}>
                <input
@@ -63,7 +88,7 @@ export const Register: FC = () => {
                      }
                   })}
                   type="text"
-                  placeholder="Name"
+                  placeholder={placeholder_name}
                />
                <small>{errors.name?.message}</small>
             </div>
@@ -77,7 +102,7 @@ export const Register: FC = () => {
                      }
                   })}
                   type="text"
-                  placeholder="Email"
+                  placeholder={placeholder_email}
                />
                <small>{errors.email?.message}</small>
             </div>
@@ -95,7 +120,7 @@ export const Register: FC = () => {
                      }
                   })}
                   type={typePassword}
-                  placeholder="Password"
+                  placeholder={placeholder_password}
                />
                <small>{errors.password?.message}</small>
             </div>
@@ -106,13 +131,16 @@ export const Register: FC = () => {
                      validate: validateReapetPassword
                   })}
                   type={typePassword}
-                  placeholder="Reapet password"
+                  placeholder={placeholder_reapPass}
                />
                <small>{errors.reapPass?.message}</small>
             </div>
-            <label><input type="checkbox" onChange={() => setIsShowPass(!isShowPass)} /> Show password</label>
-            <Button variant="outlined" type="submit">Create account</Button>
-            <Link href={''}>Need account? | Register</Link>
+            <label><input type="checkbox" onChange={() => setIsShowPass(!isShowPass)} /> {show_pass_btn}</label>
+            <LoadingButton loading={isPending} disabled={isPending} variant="outlined">
+               <span>
+                  {submit_btn}
+               </span>
+            </LoadingButton>
          </form>
       </section>
    )

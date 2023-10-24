@@ -4,16 +4,34 @@ import { FC, useState } from "react";
 import styles from './Login.module.scss'
 import { AuthService } from "@/services/auth/auth.service";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import { ILoginBody } from "@/services/auth/types";
+import Link from "next/link";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 interface IFormInput {
    email: string
    password: string
 }
 
-export const Login: FC = () => {
+interface IProps {
+   title: string,
+   placeholder_email: string,
+   placeholder_password: string,
+   show_pass_btn: string,
+   submit_btn: string,
+   link: string
+}
+
+export const Login: FC<IProps> = ({
+   title,
+   placeholder_email,
+   placeholder_password,
+   show_pass_btn,
+   submit_btn,
+   link
+}) => {
    const {
       register,
       formState: { errors },
@@ -39,7 +57,7 @@ export const Login: FC = () => {
       <section className={styles.wrapper}>
          <form onSubmit={handleSubmit(onSubmit)}>
             <Typography variant="h4" component="h3">
-               Login
+               {title}
             </Typography>
             <div>
                <input
@@ -51,7 +69,7 @@ export const Login: FC = () => {
                      }
                   })}
                   type="text"
-                  placeholder="Email"
+                  placeholder={placeholder_email}
                />
             </div>
             <div>
@@ -64,11 +82,16 @@ export const Login: FC = () => {
                      },
                   })}
                   type={typePassword}
-                  placeholder="Password"
+                  placeholder={placeholder_password}
                />
             </div>
-            <label><input type="checkbox" onChange={() => setIsShowPass(!isShowPass)} /> Show password</label>
-            <Button variant="outlined" type="submit">Login</Button>
+            <label><input type="checkbox" onChange={() => setIsShowPass(!isShowPass)} /> {show_pass_btn}</label>
+            <LoadingButton loading={isPending} disabled={isPending} variant="outlined">
+               <span>
+                  {submit_btn}
+               </span>
+            </LoadingButton>
+            <Link href={'/auth/register'}>{link}</Link>
          </form>
       </section>
    )
