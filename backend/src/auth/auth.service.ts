@@ -62,7 +62,7 @@ export class AuthService {
 
     const tokens = await this.issueTokens(result.id)
 
-    await this.prisma.user.update({
+    const user = await this.prisma.user.update({
       where: { id: result.id },
       data: {
         accessToken: tokens.accessToken,
@@ -70,7 +70,9 @@ export class AuthService {
       }
     })
 
-    return { tokens }
+    return {
+      user: this.returnUserWihtOutPassAndTokens(user), ...tokens
+    }
   }
 
   private async issueTokens(uId: string) {
